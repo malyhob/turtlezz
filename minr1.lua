@@ -45,7 +45,7 @@ local function goHome()
 end
 
 local function isWorkOver()
-    if turtle.getItemCount(16) > 0 or turtle.getFuelLevel() < 5 then
+    if turtle.getItemCount(16) > 0 or turtle.getFuelLevel() < distance then
         return true
     end
     return false
@@ -65,7 +65,7 @@ end
 -- simple input
 write("begin, goHome")
 write("\n")
-turtle.refuel()
+turtle.refuel(turtle.getItemCount())
 while true do
     local inp = read()
     if inp == "begin" then
