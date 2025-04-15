@@ -20,25 +20,13 @@ local function swivel()
     end
 end
 
-local function move(moveFunc, digFunc, attackFunc)
-    local failCount = 0
-    
-    digFunc()
-    
-    while not moveFunc() do
-        digFunc()
-        sleep(0.25)
-        
-        failCount = failCount + 1
-        
-        if failCount == 100 then
-            write("Unable to move")
-        end
-    end
+local function move()
+    turtle.dig()
+    turtle.forward()
 end
 
 local function forward()
-	move(turtle.forward, turtle.dig)
+	move()
 	
 	if direction == 0 then
 		distance = distance + 1 
