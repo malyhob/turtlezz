@@ -64,10 +64,23 @@ local function isWorkOver()
     return false
 end
 
-function Begin()
+-- actual fun
+local function begin()
     repeat
         forward()
-    until isWorkOver()
+    until isWorkOver() or direction == 1
     goHome()
     say("im done!!")
+    swivel()
+end
+
+-- simple input
+write("begin, goHome")
+while true do
+    local inp = read()
+    if inp == "begin" then
+        begin()
+    elseif inp == "goHome" then
+        goHome()
+    end
 end
