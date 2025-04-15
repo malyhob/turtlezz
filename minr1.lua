@@ -8,18 +8,6 @@ local distance = 0
 local direction = 0
 local dug = 0
 
--- say
-
-local chatBox = peripheral.find("chatbox")
-
-function say(message)
-	print(message)
-	
-	if chatBox then
-		pcall(chatBox.say, message)
-	end
-end
-
 -- helper funcs
 
 local function swivel()
@@ -44,7 +32,7 @@ local function move(moveFunc, digFunc, attackFunc)
         failCount = failCount + 1
         
         if failCount == 100 then
-            say("Unable to move")
+            write("Unable to move")
         end
     end
 end
@@ -79,15 +67,16 @@ end
 local function begin()
     repeat
         forward()
-        say(distance)
+        write(distance)
     until isWorkOver() or direction == 1
     goHome()
-    say("im done!!")
+    write("im done!!")
     swivel()
 end
 
 -- simple input
-write("begin, goHome\n")
+write("begin, goHome")
+write("\n")
 while true do
     local inp = read()
     if inp == "begin" then
