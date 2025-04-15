@@ -9,6 +9,12 @@ local direction = 0
 local dug = 0
 local maxDug = 0
 
+-- names
+local names = http.get("https://raw.githubusercontent.com/malyhob/turtlezz/refs/heads/main/names.lua")
+local name = names[math.random(1,#names)]
+
+os.setComputerLabel(name)
+
 -- helper funcs
 
 local function swivel()
