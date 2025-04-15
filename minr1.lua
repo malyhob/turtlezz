@@ -10,7 +10,7 @@ local dug = 0
 local maxDug = 0
 
 -- names
-local names = http.get("https://raw.githubusercontent.com/malyhob/turtlezz/refs/heads/main/names.lua")
+local names = http.get("https://raw.githubusercontent.com/malyhob/turtlezz/refs/heads/main/names.json")
 names = textutils.unserializeJSON(names)
 local name = names[math.random(1,#names)]
 
