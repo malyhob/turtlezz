@@ -7,6 +7,7 @@ end
 local distance = 0
 local direction = 0
 local dug = 0
+local maxDug = 0
 
 -- helper funcs
 
@@ -60,7 +61,7 @@ local function goHome()
 end
 
 local function isWorkOver()
-    if turtle.getItemCount(16) > 0 or turtle.getFuelLevel() <= distance then
+    if turtle.getItemCount(16) > 0 or turtle.getFuelLevel() <= distance or dug > maxDug then
         return true
     end
     return false
@@ -78,14 +79,17 @@ local function begin()
 end
 
 -- simple input
-write("begin, goHome")
+write("begin, limit [n]")
 write("\n")
 turtle.refuel(turtle.getItemCount())
 while true do
     local inp = read()
     if inp == "begin" then
         begin()
-    elseif inp == "goHome" then
-        goHome()
+    elseif string.sub(inp,1,5) == "limit" then
+        local limit = tonumber(string.sub(inp,7))
+        if limit then
+            maxDug = limit
+        end
     end
 end
