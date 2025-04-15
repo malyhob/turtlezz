@@ -11,7 +11,8 @@ local dug = 0
 -- helper funcs
 
 local function swivel()
-    turtle.turnRight(2)
+    turtle.turnRight()
+    turtle.turnRight()
     if direction == 0 then
         direction = 1
     else
@@ -23,7 +24,8 @@ local function dig()
     turtle.dig()
     turtle.turnRight()
     turtle.dig()
-    turtle.turnLeft(2)
+    turtle.turnLeft()
+    turtle.turnLeft()
     turtle.dig()
     turtle.turnRight()
 end
