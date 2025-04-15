@@ -45,7 +45,7 @@ local function goHome()
 end
 
 local function isWorkOver()
-    if turtle.getItemCount(16) > 0 or turtle.getFuelLevel() < distance then
+    if turtle.getItemCount(16) > 0 or turtle.getFuelLevel() <= distance then
         return true
     end
     return false
