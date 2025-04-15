@@ -8,6 +8,18 @@ local distance = 0
 local direction = 0
 local dug = 0
 
+-- say
+
+local chatBox = peripheral.find("chatbox")
+
+function say(message)
+	print(message)
+	
+	if chatBox then
+		pcall(chatBox.say, message)
+	end
+end
+
 -- helper funcs
 
 local function swivel()
@@ -27,7 +39,6 @@ local function move(moveFunc, digFunc, attackFunc)
     
     while not moveFunc() do
         digFunc()
-        attackFunc()
         sleep(0.25)
         
         failCount = failCount + 1
@@ -39,7 +50,7 @@ local function move(moveFunc, digFunc, attackFunc)
 end
 
 local function forward()
-	move(turtle.forward, turtle.dig, turtle.attack)
+	move(turtle.forward, turtle.dig)
 	
 	if direction == 0 then
 		distance = distance + 1 
@@ -76,7 +87,7 @@ local function begin()
 end
 
 -- simple input
-write("begin, goHome")
+write("begin, goHome\n")
 while true do
     local inp = read()
     if inp == "begin" then
