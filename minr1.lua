@@ -21,28 +21,30 @@ local function swivel()
     end
 end
 
-local function dig()
+local function dig(doDanceRoutine)
     turtle.dig()
-    turtle.turnRight()
-    turtle.dig()
-    turtle.turnLeft()
-    turtle.turnLeft()
-    turtle.dig()
-    turtle.turnRight()
+    if doDanceRoutine == true then
+        turtle.turnRight()
+        turtle.dig()
+        turtle.turnLeft()
+        turtle.turnLeft()
+        turtle.dig()
+        turtle.turnRight()
+    end
 end
 
-local function move()
-    dig()
+local function move(doDanceRoutine)
+    dig(doDanceRoutine)
     turtle.digUp()
     turtle.up()
-    dig()
+    dig(doDanceRoutine)
     turtle.down()
 
     turtle.forward()
 end
 
-local function forward()
-	move()
+local function forward(doDanceRoutine)
+	move(doDanceRoutine)
 	
 	if direction == 0 then
 		distance = distance + 1 
@@ -55,7 +57,7 @@ end
 local function goHome()
     swivel()
     repeat
-        forward()
+        forward(false)
     until distance == 0
     swivel()
 end
@@ -70,7 +72,7 @@ end
 -- actual fun
 local function begin()
     repeat
-        forward()
+        forward(true)
         write(distance)
     until isWorkOver() or direction == 1
     goHome()
