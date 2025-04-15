@@ -68,6 +68,7 @@ end
 local function begin()
     repeat
         forward()
+        say(distance)
     until isWorkOver() or direction == 1
     goHome()
     say("im done!!")
