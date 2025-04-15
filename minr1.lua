@@ -65,6 +65,7 @@ end
 -- simple input
 write("begin, goHome")
 write("\n")
+turtle.refuel()
 while true do
     local inp = read()
     if inp == "begin" then
