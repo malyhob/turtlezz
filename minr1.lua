@@ -11,8 +11,7 @@ local maxDug = 0
 
 -- names
 local names = http.get("https://raw.githubusercontent.com/malyhob/turtlezz/refs/heads/main/names.json")
-print(names)
-local name = names[math.random(1,#names)]
+local name = names[math.random(#names)]
 
 os.setComputerLabel(name)
 
